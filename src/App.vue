@@ -2,13 +2,42 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/images">Images</router-link> |
+      <router-link to="/breeds">Breeds</router-link> |
+      <router-link to="/random">Random</router-link> |
+       
+
     </div>
     <router-view/>
   </div>
 </template>
 
+<script>
+
+import 'bootstrap'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import {mapState} from 'vuex'
+
+export default {
+  name: 'App',
+  computed: {
+
+      ...mapState(['images'])
+
+  },
+   mounted() {
+
+      this.$store.dispatch('loadData')
+      this.$store.dispatch('loadBreeds')
+    }
+  
+}
+</script>
+
 <style>
+body{
+  background-color: #42b983;
+}
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -23,10 +52,10 @@
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #05386B;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #EDF5E1;
 }
 </style>
